@@ -271,52 +271,53 @@ elif Choice == 2:
                         pygame.time.wait(5000)
 
 
-# Human Vs Computer (medium)
-elif Choice == 3:
-    while not game_over:
+# Human Vs Computer (medium) This does not work yet
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
-
-            if event.type == pygame.MOUSEMOTION:
-                pygame.draw.rect(screen, BLACK, (0, 0, S_width, BLOCK))
-                coordinates = event.pos[0]
-                if turn == 0:
-                    pygame.draw.circle(screen, RED, (coordinates, int(BLOCK / 2)), RADIUS)
-                else:
-                    pygame.draw.circle(screen, YELLOW, (coordinates, int(BLOCK / 2)), RADIUS)
-            pygame.display.update()
-
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                #print(event.pos)
-
-                # Ask for player 1 input
-                if turn == 0:
-
-                    coordinates = event.pos[0]
-                    Col_choice = int(math.floor(coordinates / BLOCK))
-
-                    if check_move(board, Col_choice):
-                        row = get_next_open_row(board, Col_choice)
-                        apply_move(board, row, Col_choice, 1)
-
-                        turn += 1
-                        turn = turn % 2
-
-                        if check_victory(board, 1):
-                            print("PLAYER 1 WINS!!! GAME OVER")
-                            label = Font.render("PLAYER 1 WINS!!! GAME OVER", 1, RED)
-                            screen.blit(label, (40, 10))
-                            game_over = True
-
-                        else:
-                            computer_move_easy(turn)
-                            turn += 1
-                            turn = turn % 2
-
-                print_board(board)
-                display_board(board)
-
-                if game_over:
-                    pygame.time.wait(5000)
+# elif Choice == 3:
+#     while not game_over:
+#
+#         for event in pygame.event.get():
+#             if event.type == pygame.QUIT:
+#                 sys.exit()
+#
+#             if event.type == pygame.MOUSEMOTION:
+#                 pygame.draw.rect(screen, BLACK, (0, 0, S_width, BLOCK))
+#                 coordinates = event.pos[0]
+#                 if turn == 0:
+#                     pygame.draw.circle(screen, RED, (coordinates, int(BLOCK / 2)), RADIUS)
+#                 else:
+#                     pygame.draw.circle(screen, YELLOW, (coordinates, int(BLOCK / 2)), RADIUS)
+#             pygame.display.update()
+#
+#             if event.type == pygame.MOUSEBUTTONDOWN:
+#                 #print(event.pos)
+#
+#                 # Ask for player 1 input
+#                 if turn == 0:
+#
+#                     coordinates = event.pos[0]
+#                     Col_choice = int(math.floor(coordinates / BLOCK))
+#
+#                     if check_move(board, Col_choice):
+#                         row = get_next_open_row(board, Col_choice)
+#                         apply_move(board, row, Col_choice, 1)
+#
+#                         turn += 1
+#                         turn = turn % 2
+#
+#                         if check_victory(board, 1):
+#                             print("PLAYER 1 WINS!!! GAME OVER")
+#                             label = Font.render("PLAYER 1 WINS!!! GAME OVER", 1, RED)
+#                             screen.blit(label, (40, 10))
+#                             game_over = True
+#
+#                         else:
+#                             computer_move_easy(turn)
+#                             turn += 1
+#                             turn = turn % 2
+#
+#                 print_board(board)
+#                 display_board(board)
+#
+#                 if game_over:
+#                     pygame.time.wait(5000)
